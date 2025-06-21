@@ -393,7 +393,7 @@ disable_receive_shadows = true
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ap0qg")
 
-[sub_resource type="Resource" id="Resource_lelom"]
+[sub_resource type="Resource" id="Resource_7rmi2"]
 script = ExtResource("13_d34kq")
 amount = 5000
 enabled = true
@@ -402,7 +402,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_k4j1d"]
+[sub_resource type="Resource" id="Resource_4n5t4"]
 script = ExtResource("14_g4r60")
 position = Vector3(0.2, 0, 0.2)
 rotation = Vector3(20, 360, 20)
@@ -413,9 +413,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_rix45"]
+[sub_resource type="Resource" id="Resource_8ksp3"]
 script = ExtResource("11_gq0cn")
-stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_lelom"), SubResource("Resource_k4j1d")])
+stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_7rmi2"), SubResource("Resource_4n5t4")])
 
 [sub_resource type="Resource" id="Resource_vj8ic"]
 script = ExtResource("18_yl11u")
@@ -624,7 +624,7 @@ mesh = SubResource("PlaneMesh_ybbim")
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.996737, -0.0807208, 0, 0.0807208, 0.996737, -27.0236, 1.89533, -60.1663)
 script = ExtResource("10_6cphr")
-modifier_stack = SubResource("Resource_rix45")
+modifier_stack = SubResource("Resource_8ksp3")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 

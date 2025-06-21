@@ -21,8 +21,12 @@ var audios_respuesta = []
 var indice_video_actual = 0
 var esperando_respuesta = false
 var respuestas_usuario = []
+var xr_interface
 
 func _ready():
+	# CONFIGURACIÓN VR PARA MEJOR CALIDAD
+	configurar_calidad_vr()
+	
 	# Inicializar array de audios de respuesta
 	audios_respuesta = [audiorespuesta1, audiorespuesta2, audiorespuesta3, audiorespuesta4]
 	
@@ -33,6 +37,41 @@ func _ready():
 	deshabilitar_botones()
 	
 	iniciar_secuencia()
+
+func configurar_calidad_vr():
+	# Obtener la interfaz XR
+	xr_interface = XRServer.find_interface("OpenXR")
+	if xr_interface and xr_interface.is_initialized():
+		print("Configurando calidad VR...")
+		
+		# Aumentar la resolución de renderizado (valores entre 1.0 y 2.0)
+		# Empieza con 1.3, puedes ajustar según tu hardware
+		xr_interface.render_target_size_multiplier = 1.3
+		print("Render scale configurado a: ", xr_interface.render_target_size_multiplier)
+		
+		# Configurar el viewport principal
+		var main_viewport = get_viewport()
+		if main_viewport:
+			# Activar MSAA para mejor calidad
+			main_viewport.msaa_3d = Viewport.MSAA_4X
+			
+			# Asegurar que el viewport se actualice siempre
+			main_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+			
+			print("MSAA configurado a 4X")
+		
+		# Configurar el SubViewport del video si existe
+		var sub_viewport = $SubViewport
+		if sub_viewport:
+			sub_viewport.msaa_3d = Viewport.MSAA_4X
+			sub_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+			
+			# Configurar el tamaño del SubViewport para mejor calidad
+			sub_viewport.size = Vector2i(1920, 1080)  # Resolución alta para videos
+			
+		print("Configuración VR completada")
+	else:
+		print("⚠️ No se pudo encontrar la interfaz OpenXR")
 
 func deshabilitar_botones():
 	# Deshabilitar todos los botones de respuesta
@@ -128,3 +167,16 @@ func finalizar_quiz():
 	print("Quiz completado")
 	# Por ejemplo, cambiar de escena:
 	# get_tree().change_scene_to_file("res://siguiente_escena.tscn")
+
+# Función para ajustar la calidad dinámicamente (opcional)
+func _input(event):
+	# Para testing: puedes ajustar la calidad con teclas
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_EQUAL:  # Tecla +
+			if xr_interface:
+				xr_interface.render_target_size_multiplier = min(xr_interface.render_target_size_multiplier + 0.1, 2.0)
+				print("Render scale aumentado a: ", xr_interface.render_target_size_multiplier)
+		elif event.keycode == KEY_MINUS:  # Tecla -
+			if xr_interface:
+				xr_interface.render_target_size_multiplier = max(xr_interface.render_target_size_multiplier - 0.1, 0.5)
+				print("Render scale reducido a: ", xr_interface.render_target_size_multiplier)
