@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3qkw3vv7guyk"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_l2tgk"]
+file = "res://videos/RonaldVideo1.ogv"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -500.0
+offset_bottom = -268.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 783.0
+offset_bottom = 407.0
+stream = SubResource("VideoStreamTheora_l2tgk")
+autoplay = true
+expand = true

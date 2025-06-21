@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=4 uid="uid://bnhoku448e4ge"]
+
+[ext_resource type="Texture2D" uid="uid://budfcg5m7muy6" path="res://Texturas/piramide_old_sandstone_02_diff_1k.jpg" id="1_0iycq"]
+[ext_resource type="Texture2D" uid="uid://btunntimubjjj" path="res://Texturas/piramide_old_sandstone_02_nor_gl_1k.png" id="2_yr84s"]
+[ext_resource type="Texture2D" uid="uid://cok8vbu2u2vrq" path="res://Texturas/piramide_old_sandstone_02_rough_1k.png" id="3_7tfuj"]
+[ext_resource type="Texture2D" uid="uid://vd8emnhm75v5" path="res://Texturas/old_sandstone_02_disp_1k.png" id="4_be376"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7xlm"]
+albedo_texture = ExtResource("1_0iycq")
+roughness_texture = ExtResource("4_be376")
+normal_enabled = true
+normal_texture = ExtResource("2_yr84s")
+rim_enabled = true
+rim_texture = ExtResource("3_7tfuj")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5kxc"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("1_0iycq")
+metallic_texture = ExtResource("3_7tfuj")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_7tfuj")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("2_yr84s")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_c0e0d"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAQAAQACAAQAAAACAAEAAAADAAIAAgADAAQAAwAAAAQA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 5,
+"vertex_data": PackedByteArray("/38AAAAAAAD//wAA/38AAP9/AAD//wAAAAAAAP9/AAD/f////38AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vb3ms"]
+resource_name = "piramide_Cone"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("qaqqqgAA/3+pqgAAqar//1VV/39UVf9//v///6mq/38AAAAA/v+qqlRVAABUVQAA/3///6oq//+qKv9//3//fw=="),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AQAFAA0ABAAHAAwAAAAGAAMAAAAJAAYACAAKAA4ACwACAA8A"),
+"material": SubResource("StandardMaterial3D_a5kxc"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/38AAAAAqun/fwAAAAA38/9/AAAAADfz//8AAP9/qun//wAA/3+4+v//AAD/fzfz/38AAP//qun/fwAA//+4+v9/AAD//7j6AAAAAP9/qukAAAAA/3+4+gAAAAD/fzfz/3////9/uPr/f////3838/9/////f7j6/3////9/N/MENQjqLdYfht/5LVYENQjqbqHYjS3WH4YENQjqbqHYjSbybyEENQjqJvJvId/5LVZuodiNLdYfhibybyHf+S1W")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_c0e0d")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="piramide" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8631, 0, -8.85482)
+
+[node name="Cone" type="MeshInstance3D" parent="piramide"]
+transform = Transform3D(7.13355, 0, 7.13355, 0, 4.66382, 0, -7.13355, 0, 7.13355, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_e7xlm")
+mesh = SubResource("ArrayMesh_vb3ms")
+skeleton = NodePath("")

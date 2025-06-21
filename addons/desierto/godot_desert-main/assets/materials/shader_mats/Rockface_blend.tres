@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://brjnhbcus8m13"]
+
+[ext_resource type="Shader" path="res://addons/desierto/godot_desert-main/assets/shaders/terrain_blend.gdshader" id="7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("7")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/sand_color = Color(0.76, 0.7, 0.5, 1)
+shader_parameter/sand_color_dark = Color(0.66, 0.6, 0.4, 1)
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 0.1
+shader_parameter/wave_speed = 0.1
+shader_parameter/wave_intensity = 0.02

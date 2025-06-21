@@ -1,0 +1,554 @@
+[gd_scene load_steps=21 format=3 uid="uid://cwlbt3my3ub3g"]
+
+[ext_resource type="PackedScene" uid="uid://c75myjr3csee5" path="res://xr_origin.tscn" id="1_1uvle"]
+[ext_resource type="Script" path="res://main_menu.gd" id="1_3egy1"]
+[ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="1_wpai7"]
+[ext_resource type="PackedScene" uid="uid://74li3jcwrvlp" path="res://Antorcha.glb" id="2_u0v6a"]
+[ext_resource type="PackedScene" uid="uid://cs5o58jgai80" path="res://Texturas/bricks.glb" id="3_ib41y"]
+[ext_resource type="PackedScene" uid="uid://du0h7ih6parcy" path="res://Texturas/fuego.tscn" id="3_qc42u"]
+[ext_resource type="Texture2D" uid="uid://c5e0femlblgp1" path="res://Texturas/arena.jpg" id="5_4inph"]
+[ext_resource type="AudioStream" uid="uid://ckkar5qsxh2v" path="res://audios/AudioPasadiso.mp3" id="8_7qvay"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m2oga"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_u8jpu"]
+sky_material = SubResource("ProceduralSkyMaterial_m2oga")
+
+[sub_resource type="Environment" id="Environment_vvxld"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_u8jpu")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_nh613"]
+resource_name = "caminata"
+length = 54.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 54),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.22898, 0.770611, -127.771), Vector3(0.22898, 0.770611, 141.599)]
+}
+
+[sub_resource type="Animation" id="Animation_hhjuq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.22898, 0.770611, -127.771)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_satj3"]
+_data = {
+"RESET": SubResource("Animation_hhjuq"),
+"caminata": SubResource("Animation_nh613")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y24ga"]
+frequency = 0.014
+fractal_lacunarity = 3.99
+fractal_gain = 3.38
+domain_warp_enabled = true
+domain_warp_fractal_octaves = 10
+domain_warp_fractal_lacunarity = 6.65
+domain_warp_fractal_gain = 4.425
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a7uqk"]
+invert = true
+as_normal_map = true
+bump_strength = 32.0
+noise = SubResource("FastNoiseLite_y24ga")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54w40"]
+albedo_texture = ExtResource("5_4inph")
+normal_enabled = true
+normal_scale = -0.88
+normal_texture = SubResource("NoiseTexture2D_a7uqk")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2sm81"]
+material = SubResource("StandardMaterial3D_54w40")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0xet"]
+emission_enabled = true
+emission = Color(1, 0.929412, 0.556863, 1)
+emission_energy_multiplier = 2.75
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hjgm0"]
+material = SubResource("StandardMaterial3D_d0xet")
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_3egy1")
+
+[node name="XRSimulator" parent="." instance=ExtResource("1_wpai7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vvxld")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("1_1uvle")]
+transform = Transform3D(-0.930104, 0, 0.367297, 0, 1, 0, -0.367297, 0, -0.930104, 0.22898, 0.770611, -127.771)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D"]
+libraries = {
+"": SubResource("AnimationLibrary_satj3")
+}
+
+[node name="Ladrillos" type="Node3D" parent="."]
+
+[node name="bricks" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 37.2364)
+
+[node name="bricks" parent="Ladrillos/bricks" instance=ExtResource("3_ib41y")]
+transform = Transform3D(-0.0680153, -0.997684, -2.97304e-09, -4.37114e-08, 1.91069e-15, 1, -0.997684, 0.0680153, -4.36102e-08, 12.0399, 8.19498, -178.848)
+
+[node name="bricks2" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="bricks3" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -27.912)
+
+[node name="bricks4" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -59.8069)
+
+[node name="bricks5" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -91.3079)
+
+[node name="bricks6" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 69.5253)
+
+[node name="bricks7" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -122.339)
+
+[node name="bricks8" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 101.314)
+
+[node name="bricks9" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 133.48)
+
+[node name="bricks10" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="bricks11" parent="Ladrillos" instance=ExtResource("3_ib41y")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 9.93835e-07, -8.74228e-08, 3.82137e-15, -11.3681, -0.910738, 20.1103, -22.3766)
+
+[node name="Ladrillos2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.069, 0, 0)
+
+[node name="bricks" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 37.2364)
+
+[node name="bricks2" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="bricks3" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -27.912)
+
+[node name="bricks4" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -59.8069)
+
+[node name="bricks5" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -91.3079)
+
+[node name="bricks6" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 69.5253)
+
+[node name="bricks7" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -122.339)
+
+[node name="bricks8" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 101.314)
+
+[node name="bricks9" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 133.48)
+
+[node name="bricks10" parent="Ladrillos2" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="Ladrillos3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.6, 0)
+
+[node name="bricks" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, -0.521969, 37.2364)
+
+[node name="bricks2" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="bricks3" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -27.912)
+
+[node name="bricks4" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -59.8069)
+
+[node name="bricks5" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -91.3079)
+
+[node name="bricks6" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 69.5253)
+
+[node name="bricks7" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -122.339)
+
+[node name="bricks8" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 101.314)
+
+[node name="bricks9" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 133.48)
+
+[node name="bricks10" parent="Ladrillos3" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="Ladrillos4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.329, 16.6, 0)
+
+[node name="bricks" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 37.2364)
+
+[node name="bricks2" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="bricks3" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -27.912)
+
+[node name="bricks4" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -59.8069)
+
+[node name="bricks5" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -91.3079)
+
+[node name="bricks6" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 69.5253)
+
+[node name="bricks7" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, -122.339)
+
+[node name="bricks8" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 101.314)
+
+[node name="bricks9" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 133.48)
+
+[node name="bricks10" parent="Ladrillos4" instance=ExtResource("3_ib41y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2141, 0, 4.8136)
+
+[node name="Antorchas" type="Node3D" parent="."]
+
+[node name="Antorcha" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="Antorcha2" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="Antorcha3" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="Antorchas/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha4" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="Antorchas/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha5" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="Antorchas/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha6" parent="Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="Antorchas/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorchas2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 76.6855)
+
+[node name="Antorcha" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="fuego" parent="Antorchas2/Antorcha" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha2" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="fuego" parent="Antorchas2/Antorcha2" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha3" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="Antorchas2/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha4" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="Antorchas2/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha5" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="Antorchas2/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha6" parent="Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="Antorchas2/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorchas3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 155.995)
+
+[node name="Antorcha" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="fuego" parent="Antorchas3/Antorcha" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha2" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="fuego" parent="Antorchas3/Antorcha2" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha3" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="Antorchas3/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha4" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="Antorchas3/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha5" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="Antorchas3/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="Antorcha6" parent="Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="Antorchas3/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, 2.18425e-08, 0, 1.49012e-08, 1.42316, 0, 0, 2.70716e-09, 1.42316, 0.352112, 1.46395, 0.598743)
+
+[node name="AntorchasDerecha" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.45481, 0, -23.3059)
+
+[node name="Antorchas" type="Node3D" parent="AntorchasDerecha"]
+
+[node name="Antorcha" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206833, 1.66689, 1.37111)
+
+[node name="Antorcha2" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha2" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206818, 1.66689, 1.3711)
+
+[node name="Antorcha3" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206772, 1.6669, 1.3711)
+
+[node name="Antorcha4" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206825, 1.66689, 1.37109)
+
+[node name="Antorcha5" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206825, 1.66689, 1.37109)
+
+[node name="Antorcha6" parent="AntorchasDerecha/Antorchas" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206833, 1.66689, 1.3711)
+
+[node name="Antorchas2" type="Node3D" parent="AntorchasDerecha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 76.6855)
+
+[node name="Antorcha" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206833, 1.66689, 1.3711)
+
+[node name="Antorcha2" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha2" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206844, 1.66689, 1.3711)
+
+[node name="Antorcha3" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206831, 1.66689, 1.3711)
+
+[node name="Antorcha4" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206827, 1.6669, 1.3711)
+
+[node name="Antorcha5" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206829, 1.66689, 1.3711)
+
+[node name="Antorcha6" parent="AntorchasDerecha/Antorchas2" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas2/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206829, 1.6669, 1.3711)
+
+[node name="Antorchas3" type="Node3D" parent="AntorchasDerecha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 155.995)
+
+[node name="Antorcha" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -135.619)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206829, 1.66689, 1.3711)
+
+[node name="Antorcha2" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -127.995)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha2" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206833, 1.66689, 1.3711)
+
+[node name="Antorcha3" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -116.224)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha3" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206795, 1.6669, 1.3711)
+
+[node name="Antorcha4" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -92.0115)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha4" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206818, 1.66689, 1.37109)
+
+[node name="Antorcha5" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -84.3947)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha5" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206818, 1.66689, 1.3711)
+
+[node name="Antorcha6" parent="AntorchasDerecha/Antorchas3" instance=ExtResource("2_u0v6a")]
+transform = Transform3D(0.125769, -0.175683, -0.66862, 0.0324769, 0.680346, -0.172655, 0.690552, 0, 0.129895, 4.73989, 5.54775, -64.0412)
+
+[node name="fuego" parent="AntorchasDerecha/Antorchas3/Antorcha6" instance=ExtResource("3_qc42u")]
+transform = Transform3D(1.42316, -1.3202e-09, 0, 1.14809e-08, 1.42316, -2.48398e-08, 0, 6.75904e-09, 1.42316, 0.206818, 1.66689, 1.3711)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -89.5479)
+omni_range = 11.735
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -115.107)
+omni_range = 11.735
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -65.4048)
+omni_range = 11.735
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24.9014)
+omni_range = 11.735
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(54.1199, 0, 0, 0, 1.27788, 0, 0, 0, 290.379, 1.79333, -7.95832, -25.0934)
+mesh = SubResource("PlaneMesh_2sm81")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.16799e-14, 1.41107e-06, -32.2815, 32.2815, -1.41107e-06, 0, -1.41107e-06, -32.2815, -1.41107e-06, 2.70602, 0, 149.613)
+mesh = SubResource("PlaneMesh_hjgm0")
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -89.5479)
+omni_range = 11.735
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.411)
+omni_range = 11.735
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -40.5855)
+omni_range = 11.735
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.46627)
+omni_range = 11.735
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.3643)
+omni_range = 11.735
+
+[node name="OmniLight3D10" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 28.8827)
+omni_range = 11.735
+
+[node name="OmniLight3D11" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.4374)
+omni_range = 11.735
+
+[node name="OmniLight3D12" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 61.351)
+omni_range = 11.735
+
+[node name="OmniLight3D13" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 71.126)
+omni_range = 11.735
+
+[node name="OmniLight3D14" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 92.2714)
+omni_range = 11.735
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 107.015)
+omni_range = 11.735
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82477, 0, 165.201)
+light_color = Color(1, 1, 0.913725, 1)
+light_energy = 16.0
+spot_range = 49.0664
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7qvay")

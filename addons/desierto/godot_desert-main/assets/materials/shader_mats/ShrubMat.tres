@@ -1,0 +1,26 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cxbm1sstg4x42"]
+
+[ext_resource type="Texture2D" uid="uid://bp8l51y1ijnt8" path="res://addons/desierto/godot_desert-main/assets/textures/shrub/Shrub_normal.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bw2ag1210husl" path="res://addons/desierto/godot_desert-main/assets/textures/shrub/Shrub_albedo.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://rt46eweggnup" path="res://addons/desierto/godot_desert-main/assets/textures/shrub/Shrub_orm.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://1sgttepiaocd" path="res://addons/desierto/godot_desert-main/assets/textures/shrub/Shrub_transmission.png" id="4"]
+[ext_resource type="Shader" path="res://addons/desierto/godot_desert-main/assets/shaders/shrub.gdshader" id="5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("5")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.0
+shader_parameter/alpha_scissor_threshold = 0.734
+shader_parameter/roughness = 1.0
+shader_parameter/occlusion_texture_channel = null
+shader_parameter/roughness_texture_channel = null
+shader_parameter/normal_scale = 1.0
+shader_parameter/transmission = Color(0.227451, 0.227451, 0.227451, 1)
+shader_parameter/hue_randomness = 0.175
+shader_parameter/value_randomness = 0.057
+shader_parameter/ambient_wind = 0.025
+shader_parameter/texture_albedo = ExtResource("2")
+shader_parameter/texture_occlusion = ExtResource("3")
+shader_parameter/texture_normal = ExtResource("1")
+shader_parameter/texture_transmission = ExtResource("4")

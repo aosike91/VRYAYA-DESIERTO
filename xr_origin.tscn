@@ -1,0 +1,212 @@
+[gd_scene load_steps=7 format=3 uid="uid://c75myjr3csee5"]
+
+[ext_resource type="Script" path="res://xr_origin_3d.gd" id="1_vbv18"]
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_5l4xx"]
+[ext_resource type="Texture2D" uid="uid://l8wneh7n4rc" path="res://Fondos-texturas/ConffetiControl.png" id="2_gsfoq"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_u805b"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_dfii4"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_vtx2t"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+transform = Transform3D(-0.930373, 0, 0.366615, 0, 1, 0, -0.366615, 0, -0.930373, 0, 0, 0)
+script = ExtResource("1_vbv18")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+transform = Transform3D(0.832931, 0, 0.553377, 0, 1, 0, -0.553377, 0, 0.832931, 0.0848295, 0.407733, -0.0334272)
+current = true
+fov = 75.6068
+
+[node name="Control" type="Control" parent="XRCamera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.07517, 1.06546)
+pivot_offset = Vector2(572.348, 309.189)
+
+[node name="TextureRect" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 1348.0
+offset_bottom = 1844.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect2" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 336.0
+offset_top = -8.0
+offset_right = 1684.0
+offset_bottom = 1844.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect3" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 696.0
+offset_top = -8.0
+offset_right = 2044.0
+offset_bottom = 1844.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect4" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1048.0
+offset_top = 352.0
+offset_right = 2396.0
+offset_bottom = 2204.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.57079
+scale = Vector2(0.144174, 0.125852)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect5" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 1348.0
+offset_bottom = 1844.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect6" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 1348.0
+offset_bottom = 1844.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect7" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1048.0
+offset_top = 664.0
+offset_right = 2396.0
+offset_bottom = 2516.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.57079
+scale = Vector2(0.144174, 0.125852)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect8" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1064.0
+offset_top = 648.0
+offset_right = 2412.0
+offset_bottom = 2500.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.14159
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect9" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 712.0
+offset_top = 640.0
+offset_right = 2060.0
+offset_bottom = 2492.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.14159
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect10" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 640.0
+offset_right = 1708.0
+offset_bottom = 2492.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.14159
+scale = Vector2(0.144174, 0.0996406)
+texture = ExtResource("2_gsfoq")
+
+[node name="TextureRect11" type="TextureRect" parent="XRCamera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 144.0
+offset_right = 1476.0
+offset_bottom = 1996.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.57079
+scale = Vector2(0.144174, 0.125852)
+texture = ExtResource("2_gsfoq")
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.178462, 0)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("2_5l4xx")]
+transform = Transform3D(0.832931, 0, 0.553377, 0, 1, 0, -0.553377, 0, 0.832931, 0, 0, 0)
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("3_u805b")]
+
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("4_dfii4")]
+transform = Transform3D(0.962332, 0, 0.271877, 0, 1, 0, -0.271877, 0, 0.962332, 0, 0, 0)
+show_laser = 2
+laser_length = 1
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.146003, 0.178462, -0.0575328)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="RightHand" instance=ExtResource("4_vtx2t")]
+transform = Transform3D(0.832931, 0, 0.553377, 0, 1, 0, -0.553377, 0, 0.832931, 0, 0, 0)
+
+[node name="FunctionPickup" parent="RightHand" instance=ExtResource("3_u805b")]
+
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("4_dfii4")]
+transform = Transform3D(0.95879, 0, 0.284116, 0, 1, 0, -0.284116, 0, 0.95879, 0, 0, 0)
+show_laser = 2
+laser_length = 1

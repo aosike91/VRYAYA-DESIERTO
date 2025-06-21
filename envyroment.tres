@@ -1,0 +1,26 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://dndrnxt14j874"]
+
+[ext_resource type="Texture2D" uid="uid://bgc5rl13dopuj" path="res://addons/proton_scatter/demos/assets/textures/sky_2.png" id="1_p774v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rv0mo"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_energy_multiplier = 0.75
+sky_cover = ExtResource("1_p774v")
+sky_cover_modulate = Color(1, 1, 0.596078, 1)
+ground_bottom_color = Color(0.2, 0, 0.133333, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_46not"]
+sky_material = SubResource("ProceduralSkyMaterial_rv0mo")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_46not")
+reflected_light_source = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 0.776471, 0.498039, 1)
+fog_light_energy = 1.59
+fog_sun_scatter = 0.5
+fog_density = 0.001
+fog_sky_affect = 0.0

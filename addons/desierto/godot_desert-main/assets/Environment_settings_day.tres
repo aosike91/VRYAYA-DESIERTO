@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://26nrsns5tfpp"]
+
+[ext_resource type="Texture2D" uid="uid://bgc5rl13dopuj" path="res://addons/proton_scatter/demos/sky_2.png" id="1_848lx"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6yckp"]
+panorama = ExtResource("1_848lx")
+
+[sub_resource type="Sky" id="Sky_7xqon"]
+sky_material = SubResource("PanoramaSkyMaterial_6yckp")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_7xqon")
+sky_rotation = Vector3(0, -0.436332, 0)
+ambient_light_sky_contribution = 0.25
+tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 0.25
+ssao_ao_channel_affect = 1.0
+glow_enabled = true

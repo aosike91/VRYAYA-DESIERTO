@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8qyen8jexftg"]
+
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="1_oi05h"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="2_ii3ix"]
+[ext_resource type="PackedScene" uid="uid://cigx2gnf4tg4d" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_physics_hand.tscn" id="2_j5olx"]
+[ext_resource type="Material" path="res://addons/godot-xr-tools/materials/pointer.tres" id="3_4037k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6j0ff"]
+shading_mode = 0
+diffuse_mode = 1
+albedo_color = Color(1, 0, 1, 0.690196)
+
+[node name="XROrigin3D" type="XROrigin3D"]
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+fov = 52.3
+
+[node name="LeftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="LeftHand" instance=ExtResource("1_oi05h")]
+
+[node name="FunctionPointer" parent="LeftHand" instance=ExtResource("2_ii3ix")]
+show_laser = 2
+laser_length = 1
+laser_material = ExtResource("3_4037k")
+laser_hit_material = SubResource("StandardMaterial3D_6j0ff")
+show_target = true
+target_radius = 0.02
+
+[node name="RightHand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("2_j5olx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0400999, 0, 0)
+
+[node name="FunctionPointer" parent="RightHand" instance=ExtResource("2_ii3ix")]

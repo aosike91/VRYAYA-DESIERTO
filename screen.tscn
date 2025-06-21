@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0sfoulb7du0"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5o776"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Screen" type="Sprite3D"]
+transform = Transform3D(0.599982, 0.00478052, 0.0187327, -0.00531207, 0.600029, 0.0170128, -0.018589, -0.0171697, 0.59976, -29.1711, 3.3021, -5.57969)
+texture = SubResource("ViewportTexture_5o776")
