@@ -49,7 +49,7 @@ func configurar_calidad_vr():
 		
 		# Aumentar la resolución de renderizado (valores entre 1.0 y 2.0)
 		# Empieza con 1.3, puedes ajustar según tu hardware
-		xr_interface.render_target_size_multiplier = 1.4
+		xr_interface.render_target_size_multiplier = 1.2
 		print("Render scale configurado a: ", xr_interface.render_target_size_multiplier)
 		
 		# Configurar el viewport principal
