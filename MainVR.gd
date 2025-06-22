@@ -26,9 +26,11 @@ var xr_interface
 
 func _ready():
 	# CONFIGURACIÓN VR PARA MEJOR CALIDAD
+	
 	configurar_calidad_vr()
 	
 	# Inicializar array de audios de respuesta
+	
 	audios_respuesta = [audiorespuesta1, audiorespuesta2, audiorespuesta3, audiorespuesta4]
 	
 	# Deshabilitar el viewport inicialmente
@@ -47,7 +49,7 @@ func configurar_calidad_vr():
 		
 		# Aumentar la resolución de renderizado (valores entre 1.0 y 2.0)
 		# Empieza con 1.3, puedes ajustar según tu hardware
-		xr_interface.render_target_size_multiplier = 1.3
+		xr_interface.render_target_size_multiplier = 1.2
 		print("Render scale configurado a: ", xr_interface.render_target_size_multiplier)
 		
 		# Configurar el viewport principal
@@ -57,20 +59,19 @@ func configurar_calidad_vr():
 			camera.far = 200.0  # Objetos más allá de 100 metros no se renderizan
 		
 		var main_viewport = get_viewport()
-		if main_viewport:
+		
 			# Activar MSAA para mejor calidad
-			main_viewport.msaa_3d = Viewport.MSAA_4X
+		main_viewport.msaa_3d = Viewport.MSAA_2X
 			
 			# Asegurar que el viewport se actualice siempre
 			
-			print("MSAA configurado a 4X")
+		print("MSAA configurado a 2X")
 		
 		# CONFIGURACIÓN DE SOMBRAS DE ALTA CALIDAD
 		configurar_sombras_alta_calidad()
 		
 		print("Configuración VR completada")
-	else:
-		print("⚠️ No se pudo encontrar la interfaz OpenXR")
+		
 
 func configurar_sombras_alta_calidad():
 	print("🌑 Configurando sombras de alta calidad...")
@@ -83,10 +84,7 @@ func configurar_sombras_alta_calidad():
 	# SHADOW_QUALITY_SOFT_LOW = sombras suaves de baja calidad
 	# SHADOW_QUALITY_SOFT_MEDIUM = sombras suaves de calidad media
 	# SHADOW_QUALITY_SOFT_HIGH = sombras suaves de alta calidad
-	rendering_server.directional_shadow_quality_set(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
-	
 	# Configurar la calidad de las sombras positional (luces puntuales y spots)
-	rendering_server.positional_shadow_quality_set(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 	
 	# Aumentar el tamaño del atlas de sombras direccionales (mayor resolución)
 	# Valores posibles: 1024, 2048, 4096, 8192

@@ -1,11 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://cwlbt3my3ub3g"]
+[gd_scene load_steps=21 format=3 uid="uid://dnx4nr53n3vk1"]
 
-[ext_resource type="PackedScene" uid="uid://c75myjr3csee5" path="res://xr_origin.tscn" id="1_1uvle"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_3egy1"]
 [ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="1_wpai7"]
 [ext_resource type="PackedScene" uid="uid://74li3jcwrvlp" path="res://Antorcha.glb" id="2_u0v6a"]
 [ext_resource type="PackedScene" uid="uid://cs5o58jgai80" path="res://Texturas/bricks.glb" id="3_ib41y"]
-[ext_resource type="PackedScene" uid="uid://du0h7ih6parcy" path="res://Texturas/fuego.tscn" id="3_qc42u"]
+[ext_resource type="PackedScene" path="res://Texturas/fuego.tscn" id="3_qc42u"]
+[ext_resource type="Script" path="res://xr_origin_3d.gd" id="3_vm2tm"]
 [ext_resource type="Texture2D" uid="uid://c5e0femlblgp1" path="res://Texturas/arena.jpg" id="5_4inph"]
 [ext_resource type="AudioStream" uid="uid://ckkar5qsxh2v" path="res://audios/AudioPasadiso.mp3" id="8_7qvay"]
 
@@ -22,28 +22,12 @@ background_energy_multiplier = 0.1
 sky = SubResource("Sky_u8jpu")
 tonemap_mode = 2
 
-[sub_resource type="Animation" id="Animation_nh613"]
-resource_name = "caminata"
-length = 54.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 54),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.22898, 0.770611, -127.771), Vector3(0.22898, 0.770611, 141.599)]
-}
-
-[sub_resource type="Animation" id="Animation_hhjuq"]
+[sub_resource type="Animation" id="Animation_thudb"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,10 +37,26 @@ tracks/0/keys = {
 "values": [Vector3(0.22898, 0.770611, -127.771)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_satj3"]
+[sub_resource type="Animation" id="Animation_vbfov"]
+resource_name = "caminata"
+length = 51.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 51),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.22898, 0.770611, -127.771), Vector3(0.22898, 0.770611, 133.095)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7r3mp"]
 _data = {
-"RESET": SubResource("Animation_hhjuq"),
-"caminata": SubResource("Animation_nh613")
+"RESET": SubResource("Animation_thudb"),
+"caminata": SubResource("Animation_vbfov")
 }
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y24ga"]
@@ -100,12 +100,18 @@ script = ExtResource("1_3egy1")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vvxld")
 
-[node name="XROrigin3D" parent="." instance=ExtResource("1_1uvle")]
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(-0.930104, 0, 0.367297, 0, 1, 0, -0.367297, 0, -0.930104, 0.22898, 0.770611, -127.771)
+script = ExtResource("3_vm2tm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D"]
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(0.832931, 0, 0.553377, 0, 1, 0, -0.553377, 0, 0.832931, 0.0848295, 0.407733, -0.0334272)
+current = true
+fov = 75.6068
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D/XRCamera3D"]
 libraries = {
-"": SubResource("AnimationLibrary_satj3")
+"": SubResource("AnimationLibrary_7r3mp")
 }
 
 [node name="Ladrillos" type="Node3D" parent="."]

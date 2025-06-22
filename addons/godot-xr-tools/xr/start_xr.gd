@@ -36,7 +36,7 @@ static var _xr_active : bool = false
 @export var viewport : Viewport
 
 ## Adjusts the pixel density on the rendering target
-@export var render_target_size_multiplier : float = 1.0
+@export var render_target_size_multiplier : float = 1.4
 
 ## If true, the XR passthrough is enabled (OpenXR only)
 @export var enable_passthrough : bool = false: set = _set_enable_passthrough
