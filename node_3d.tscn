@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://bc122wfj402tu"]
+[gd_scene load_steps=72 format=4 uid="uid://bc122wfj402tu"]
 
 [ext_resource type="Script" path="res://MainVR.gd" id="1_yt087"]
 [ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="2_o8w1q"]
@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="14_g4r60"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="16_6va20"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="17_ji4mr"]
-[ext_resource type="ArrayOccluder3D" uid="uid://v75rsufg5o8v" path="res://ocluder.occ" id="18_e1x1c"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="18_yl11u"]
 [ext_resource type="AudioStream" uid="uid://cy52wu7q2dbi5" path="res://fiestasalsaquinceanerabaila.ogg" id="24_oowaj"]
 [ext_resource type="AudioStream" uid="uid://c1jqiwwqgs7b1" path="res://audios/audiopregunta.mp3" id="25_fmo5m"]
@@ -384,6 +383,7 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap0qg"]
 resource_local_to_scene = true
+shading_mode = 0
 disable_ambient_light = true
 disable_fog = true
 albedo_texture = SubResource("ViewportTexture_sk35p")
@@ -395,7 +395,7 @@ material = SubResource("StandardMaterial3D_ap0qg")
 
 [sub_resource type="Resource" id="Resource_frknb"]
 script = ExtResource("13_d34kq")
-amount = 5000
+amount = 2000
 enabled = true
 override_global_seed = false
 custom_seed = 0
@@ -419,11 +419,11 @@ stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_frknb"), SubResour
 
 [sub_resource type="Resource" id="Resource_vj8ic"]
 script = ExtResource("18_yl11u")
-radius = 34.4202
+radius = 30.379
 
 [sub_resource type="Resource" id="Resource_mgo6m"]
 script = ExtResource("18_yl11u")
-radius = 21.5911
+radius = 21.4428
 
 [sub_resource type="Resource" id="Resource_5qx7x"]
 script = ExtResource("18_yl11u")
@@ -445,6 +445,7 @@ script = ExtResource("2_oukal")
 transform = Transform3D(0.832931, 0, 0.553377, 0, 1, 0, -0.553377, 0, 0.832931, 0.0848295, 0.407733, -0.0334272)
 current = true
 fov = 68.3419
+far = 200.0
 
 [node name="Viewport2Din3D" parent="XROrigin3D/XRCamera3D" instance=ExtResource("5_fof7u")]
 transform = Transform3D(1, 0, -1.68583e-08, 0, 1, 0, 1.68583e-08, 0, 1, 0.191458, 0, -0.893677)
@@ -637,13 +638,13 @@ source_ignore_scale = false
 path = "res://addons/proton_scatter/demos/assets/grass_2.tscn"
 
 [node name="SphereShape2" type="Node3D" parent="Grass"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21329, 0.0320051, -0.71306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21329, 0.200411, 1.36642)
 visible = false
 script = ExtResource("17_ji4mr")
 shape = SubResource("Resource_vj8ic")
 
 [node name="ScatterShape" type="Node3D" parent="Grass"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83512, 0.593538, 3.42482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.83512, 0.714899, 4.92339)
 visible = false
 script = ExtResource("17_ji4mr")
 negative = true
@@ -655,11 +656,6 @@ visible = false
 script = ExtResource("17_ji4mr")
 negative = true
 shape = SubResource("Resource_5qx7x")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-visible = false
-layers = 1048575
-occluder = ExtResource("18_e1x1c")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_oowaj")

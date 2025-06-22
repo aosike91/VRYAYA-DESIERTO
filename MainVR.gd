@@ -15,6 +15,7 @@ extends Node3D
 @onready var control : Control = $XROrigin3D/XRCamera3D/Control
 @onready var viewport2d  = $XROrigin3D/XRCamera3D/Viewport2Din3D
 @onready var confettiaudio: AudioStreamPlayer = $AudioStreamPlayer
+@onready var grass_node = $Node3D/Grass  # Referencia al nodo Grass
 var videos = ["ERRORMENSAJE", "ERRORCODIGO", "ERROREMISOR","ERRORRECEPTOR"]  
 var respuestas_correctas = ["Mensaje", "Código", "Emisor","Receptor"]  
 var audios_respuesta = []
@@ -22,8 +23,6 @@ var indice_video_actual = 0
 var esperando_respuesta = false
 var respuestas_usuario = []
 var xr_interface
-var lod_timer = 0.0
-var lod_update_interval = 0.5  # Actualizar LOD cada 0.5 segundos
 
 func _ready():
 	# CONFIGURACIÓN VR PARA MEJOR CALIDAD
@@ -52,111 +51,55 @@ func configurar_calidad_vr():
 		print("Render scale configurado a: ", xr_interface.render_target_size_multiplier)
 		
 		# Configurar el viewport principal
+		var camera = $XROrigin3D/XRCamera3D
+		if camera:
+		# Reducir la distancia máxima de renderizado para mejorar rendimiento
+			camera.far = 200.0  # Objetos más allá de 100 metros no se renderizan
+		
 		var main_viewport = get_viewport()
 		if main_viewport:
 			# Activar MSAA para mejor calidad
 			main_viewport.msaa_3d = Viewport.MSAA_4X
 			
 			# Asegurar que el viewport se actualice siempre
-			main_viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 			
 			print("MSAA configurado a 4X")
 		
-		# Configurar LOD y distancias de renderizado
-		configurar_lod_sistema()
+		# CONFIGURACIÓN DE SOMBRAS DE ALTA CALIDAD
+		configurar_sombras_alta_calidad()
 		
 		print("Configuración VR completada")
 	else:
 		print("⚠️ No se pudo encontrar la interfaz OpenXR")
 
-func configurar_lod_sistema():
-	# Configurar las distancias de renderizado y LOD
-	var camera = $XROrigin3D/XRCamera3D
-	if camera:
-		# Reducir la distancia máxima de renderizado para mejorar rendimiento
-		camera.far = 100.0  # Objetos más allá de 100 metros no se renderizan
-		
-		# Configurar el Environment para fog (niebla) que oculte objetos lejanos
-		var environment = camera.environment
-		if not environment:
-			environment = Environment.new()
-			camera.environment = environment
-		
-		# Activar fog para ocultar objetos lejanos gradualmente
-		environment.fog_enabled = true
-		environment.fog_light_color = Color(0.8, 0.8, 0.9, 1.0)  # Color azulado suave
-		environment.fog_light_energy = 0.5
-		environment.fog_sun_scatter = 0.1
-		environment.fog_density = 0.01  # Densidad baja para efecto sutil
-		environment.fog_aerial_perspective = 0.3
-		environment.fog_sky_affect = 0.1
-		
-		print("Sistema LOD configurado")
+func configurar_sombras_alta_calidad():
+	print("🌑 Configurando sombras de alta calidad...")
 	
-	# Configurar mesh LOD automático para todos los MeshInstance3D
-	configurar_mesh_lod_automatico()
-
-func configurar_mesh_lod_automatico():
-	# Buscar todos los MeshInstance3D en la escena
-	var meshes = find_all_mesh_instances(self)
+	# Configurar el RenderingServer para mejores sombras
+	var rendering_server = RenderingServer
 	
-	for mesh_instance in meshes:
-		# Solo aplicar LOD a objetos que no sean críticos (UI, botones, etc.)
-		if not es_objeto_critico(mesh_instance):
-			configurar_lod_para_mesh(mesh_instance)
-
-func find_all_mesh_instances(node: Node) -> Array:
-	var meshes = []
+	# Configurar la calidad de las sombras direccionales (sol)
+	# SHADOW_QUALITY_HARD = sombras duras pero rápidas
+	# SHADOW_QUALITY_SOFT_LOW = sombras suaves de baja calidad
+	# SHADOW_QUALITY_SOFT_MEDIUM = sombras suaves de calidad media
+	# SHADOW_QUALITY_SOFT_HIGH = sombras suaves de alta calidad
+	rendering_server.directional_shadow_quality_set(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 	
-	if node is MeshInstance3D:
-		meshes.append(node)
+	# Configurar la calidad de las sombras positional (luces puntuales y spots)
+	rendering_server.positional_shadow_quality_set(RenderingServer.SHADOW_QUALITY_SOFT_HIGH)
 	
-	for child in node.get_children():
-		meshes.append_array(find_all_mesh_instances(child))
+	# Aumentar el tamaño del atlas de sombras direccionales (mayor resolución)
+	# Valores posibles: 1024, 2048, 4096, 8192
+	# Más alto = mejor calidad pero más costo de rendimiento
+	rendering_server.directional_shadow_atlas_set_size(4096, true)  # true para 16-bit
 	
-	return meshes
-
-func es_objeto_critico(mesh_instance: MeshInstance3D) -> bool:
-	# Definir qué objetos son críticos y NO deben tener LOD reducido
-	var path = mesh_instance.get_path()
-	var name = mesh_instance.name.to_lower()
+	print("✅ Sombras configuradas:")
+	print("  - Calidad direccional: SOFT_HIGH")
+	print("  - Calidad posicional: SOFT_HIGH") 
+	print("  - Atlas direccional: 4096x4096")
 	
-	# Objetos críticos: botones, UI, elementos interactivos cercanos
-	var objetos_criticos = ["boton", "button", "ui", "viewport2din3d", "control"]
-	
-	for critico in objetos_criticos:
-		if critico in name:
-			return true
-	
-	# Si está muy cerca de la cámara también es crítico
-	var camera = $XROrigin3D/XRCamera3D
-	if camera:
-		var distancia = camera.global_position.distance_to(mesh_instance.global_position)
-		if distancia < 3.0:  # Objetos a menos de 3 metros son críticos
-			return true
-	
-	return false
-
-func configurar_lod_para_mesh(mesh_instance: MeshInstance3D):
-	# Crear sistema de LOD basado en distancia
-	var camera = $XROrigin3D/XRCamera3D
-	if not camera:
-		return
-	
-	# Configurar material con LOD
-	var material = mesh_instance.get_surface_override_material(0)
-	if not material:
-		material = mesh_instance.mesh.surface_get_material(0)
-	
-	if material:
-		# Crear copia del material para modificar
-		var lod_material = material.duplicate()
-		
-		# Configurar filtro de texturas con distancia
-		if lod_material.has_method("set_texture_filter"):
-			lod_material.set_texture_filter(BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS)
-		
-		mesh_instance.set_surface_override_material(0, lod_material)
+	# Configurar luces específicas si existen
+	configurar_luces_escena()
 
 func deshabilitar_botones():
 	# Deshabilitar todos los botones de respuesta
@@ -172,6 +115,20 @@ func habilitar_botones():
 		boton.set_process_input(true)
 		if boton.has_method("set_disabled"):
 			boton.set_disabled(false)
+
+# Nueva función para mostrar viewport y ocultar grass
+func mostrar_viewport():
+	viewport2d.visible = true
+	if grass_node:
+		grass_node.visible = false
+		print("🌱 Grass ocultado")
+
+# Nueva función para ocultar viewport y mostrar grass
+func ocultar_viewport():
+	viewport2d.visible = false
+	if grass_node:
+		grass_node.visible = true
+		print("🌱 Grass mostrado")
 
 func iniciar_secuencia():
 	audio1.play()
@@ -219,13 +176,14 @@ func verificar_respuesta(nodo_seleccionado):
 		
 		if es_correcta:
 			print("✅ Respuesta correcta:", nodo_seleccionado.name)
-			# Mostrar viewport y reproducir animación
-			viewport2d.visible = true
+			# Mostrar viewport y ocultar grass usando la nueva función
+			mostrar_viewport()
 			animasau.play("confetti")
 			confettiaudio.play()
 			
 			await animasau.animation_finished
-			viewport2d.visible = false
+			# Ocultar viewport y mostrar grass usando la nueva función
+			ocultar_viewport()
 		else:
 			print("❌ Respuesta incorrecta:", nodo_seleccionado.name)
 		
@@ -253,49 +211,60 @@ func finalizar_quiz():
 	# Por ejemplo, cambiar de escena:
 	# get_tree().change_scene_to_file("res://siguiente_escena.tscn")
 
-func _process(delta):
-	# Actualizar LOD dinámicamente
-	lod_timer += delta
-	if lod_timer >= lod_update_interval:
-		lod_timer = 0.0
-		actualizar_lod_dinamico()
+func configurar_luces_escena():
+	print("💡 Configurando luces de la escena...")
+	
+	# Buscar todas las luces direccionales (como el sol)
+	var luces_direccionales = get_tree().get_nodes_in_group("directional_lights")
+	if luces_direccionales.is_empty():
+		# Si no hay grupo, buscar por tipo
+		luces_direccionales = []
+		_buscar_luces_recursivo(self, DirectionalLight3D, luces_direccionales)
+	
+	for luz in luces_direccionales:
+		if luz is DirectionalLight3D:
+			# Habilitar sombras
+			luz.shadow_enabled = true
+			# Configurar bias para evitar shadow acne
+			luz.shadow_bias = 0.1
+			luz.shadow_normal_bias = 1.0
+			# Configurar el modo de sombra
+			luz.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
+			# Aumentar la distancia máxima de sombras
+			luz.directional_shadow_max_distance = 100.0
+			print("  ✅ DirectionalLight configurada:", luz.name)
+	
+	# Buscar luces puntuales y spots
+	var luces_puntuales = []
+	_buscar_luces_recursivo(self, SpotLight3D, luces_puntuales)
+	_buscar_luces_recursivo(self, OmniLight3D, luces_puntuales)
+	
+	for luz in luces_puntuales:
+		if luz is Light3D:
+			# Habilitar sombras
+			luz.shadow_enabled = true
+			# Configurar bias
+			luz.shadow_bias = 0.1
+			luz.shadow_normal_bias = 1.0
+			print("  ✅ Luz puntual/spot configurada:", luz.name)
+	
+	print("💡 Configuración de luces completada")
 
-func actualizar_lod_dinamico():
-	var camera = $XROrigin3D/XRCamera3D
-	if not camera:
-		return
+# Función auxiliar para buscar luces recursivamente
+func _buscar_luces_recursivo(nodo: Node, tipo_luz: Variant, array_luces: Array):
+	if nodo.is_class(str(tipo_luz).get_slice(".", -1)):
+		array_luces.append(nodo)
 	
-	var meshes = find_all_mesh_instances(self)
-	
-	for mesh_instance in meshes:
-		if es_objeto_critico(mesh_instance):
-			continue
-		
-		var distancia = camera.global_position.distance_to(mesh_instance.global_position)
-		actualizar_calidad_por_distancia(mesh_instance, distancia)
-
-func actualizar_calidad_por_distancia(mesh_instance: MeshInstance3D, distancia: float):
-	# Definir niveles de calidad por distancia
-	var material = mesh_instance.get_surface_override_material(0)
-	if not material:
-		return
-	
-	# Muy cerca (0-5m): Calidad máxima
-	if distancia < 5.0:
-		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
-		material.flags_transparent = false
-		
-	# Distancia media (5-15m): Calidad media
-	elif distancia < 15.0:
-		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		
-	# Lejos (15-30m): Calidad baja
-	elif distancia < 30.0:
-		mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		# Reducir detalles si es posible
-		if material.has_method("set_detail_enabled"):
-			material.set_detail_enabled(false)
-	
-	# Muy lejos (30m+): Muy baja calidad o invisible
-	else:
-		mesh_instance.visible = false  # Ocultar completamente
+	for hijo in nodo.get_children():
+		_buscar_luces_recursivo(hijo, tipo_luz, array_luces)
+func _input(event):
+	# Para testing: puedes ajustar la calidad con teclas
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_EQUAL:  # Tecla +
+			if xr_interface:
+				xr_interface.render_target_size_multiplier = min(xr_interface.render_target_size_multiplier + 0.1, 2.0)
+				print("Render scale aumentado a: ", xr_interface.render_target_size_multiplier)
+		elif event.keycode == KEY_MINUS:  # Tecla -
+			if xr_interface:
+				xr_interface.render_target_size_multiplier = max(xr_interface.render_target_size_multiplier - 0.1, 0.5)
+				print("Render scale reducido a: ", xr_interface.render_target_size_multiplier)
