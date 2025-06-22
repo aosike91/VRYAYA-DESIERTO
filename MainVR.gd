@@ -115,18 +115,9 @@ func habilitar_botones():
 			boton.set_disabled(false)
 
 # Nueva función para mostrar viewport y ocultar grass
-func mostrar_viewport():
-	viewport2d.visible = true
-	if grass_node:
-		grass_node.visible = false
-		print("🌱 Grass ocultado")
 
 # Nueva función para ocultar viewport y mostrar grass
-func ocultar_viewport():
-	viewport2d.visible = false
-	if grass_node:
-		grass_node.visible = true
-		print("🌱 Grass mostrado")
+
 
 func iniciar_secuencia():
 	audio1.play()
@@ -175,13 +166,13 @@ func verificar_respuesta(nodo_seleccionado):
 		if es_correcta:
 			print("✅ Respuesta correcta:", nodo_seleccionado.name)
 			# Mostrar viewport y ocultar grass usando la nueva función
-			mostrar_viewport()
+		
 			animasau.play("confetti")
 			confettiaudio.play()
 			
 			await animasau.animation_finished
 			# Ocultar viewport y mostrar grass usando la nueva función
-			ocultar_viewport()
+			
 		else:
 			print("❌ Respuesta incorrecta:", nodo_seleccionado.name)
 		
@@ -224,12 +215,13 @@ func configurar_luces_escena():
 			# Habilitar sombras
 			luz.shadow_enabled = true
 			# Configurar bias para evitar shadow acne
-			luz.shadow_bias = 0.1
-			luz.shadow_normal_bias = 1.0
+			luz.shadow_bias = 0.5
+			luz.shadow_normal_bias = 0.8
+			luz.directional_shadow_fade_start = 0.8
 			# Configurar el modo de sombra
-			luz.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
+			luz.directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
 			# Aumentar la distancia máxima de sombras
-			luz.directional_shadow_max_distance = 100.0
+			luz.directional_shadow_max_distance = 75.0
 			print("  ✅ DirectionalLight configurada:", luz.name)
 	
 	# Buscar luces puntuales y spots

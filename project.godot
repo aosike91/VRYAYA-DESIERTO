@@ -29,8 +29,10 @@ enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg", "res://addon
 renderer/rendering_method="mobile"
 occlusion_culling/occlusion_rays_per_thread=20
 occlusion_culling/use_occlusion_culling=true
+anti_aliasing/foveation_level="0"
 
 [xr]
 
 openxr/enabled=true
+openxr/foveation_level=1
 shaders/enabled=true
