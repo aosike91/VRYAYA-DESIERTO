@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgolmvhr20h1m"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D"]
+transform = Transform3D(0.0300562, -0.999353, -0.0197806, -0.95016, -0.0347092, 0.309824, -0.31031, 0.00948258, -0.950588, -33.262, 29.824, -82.418)
+light_color = Color(1, 0.635294, 0.384314, 1)
+light_energy = 2.296
+light_bake_mode = 0
+light_cull_mask = 4294180866
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 1.705
+shadow_blur = 0.33
+directional_shadow_mode = 0
+directional_shadow_max_distance = 75.0

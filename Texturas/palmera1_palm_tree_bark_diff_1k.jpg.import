@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnk1c08m2gstm"
 path.s3tc="res://.godot/imported/palmera1_palm_tree_bark_diff_1k.jpg-ebb149d4bd77d93d3bd55bd38ee6850a.s3tc.ctex"
+path.etc2="res://.godot/imported/palmera1_palm_tree_bark_diff_1k.jpg-ebb149d4bd77d93d3bd55bd38ee6850a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/palmera1_palm_tree_bark_diff_1k.jpg"
-dest_files=["res://.godot/imported/palmera1_palm_tree_bark_diff_1k.jpg-ebb149d4bd77d93d3bd55bd38ee6850a.s3tc.ctex"]
+dest_files=["res://.godot/imported/palmera1_palm_tree_bark_diff_1k.jpg-ebb149d4bd77d93d3bd55bd38ee6850a.s3tc.ctex", "res://.godot/imported/palmera1_palm_tree_bark_diff_1k.jpg-ebb149d4bd77d93d3bd55bd38ee6850a.etc2.ctex"]
 
 [params]
 

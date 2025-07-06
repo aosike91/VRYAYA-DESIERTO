@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0y1gnu0f5hfn"
 path.s3tc="res://.godot/imported/FlatBoulder_albedo.png-e045fa14b4732eade18fa24c41ec1323.s3tc.ctex"
+path.etc2="res://.godot/imported/FlatBoulder_albedo.png-e045fa14b4732eade18fa24c41ec1323.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/flat_boulder/FlatBoulder_albedo.png"
-dest_files=["res://.godot/imported/FlatBoulder_albedo.png-e045fa14b4732eade18fa24c41ec1323.s3tc.ctex"]
+dest_files=["res://.godot/imported/FlatBoulder_albedo.png-e045fa14b4732eade18fa24c41ec1323.s3tc.ctex", "res://.godot/imported/FlatBoulder_albedo.png-e045fa14b4732eade18fa24c41ec1323.etc2.ctex"]
 
 [params]
 

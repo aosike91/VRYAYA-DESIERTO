@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hxivrocyqb16"
 path.s3tc="res://.godot/imported/terrain_gradient.png-5e57d508a81b622a53fed8ff529d12ca.s3tc.ctex"
+path.etc2="res://.godot/imported/terrain_gradient.png-5e57d508a81b622a53fed8ff529d12ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/terrain/terrain_gradient.png"
-dest_files=["res://.godot/imported/terrain_gradient.png-5e57d508a81b622a53fed8ff529d12ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/terrain_gradient.png-5e57d508a81b622a53fed8ff529d12ca.s3tc.ctex", "res://.godot/imported/terrain_gradient.png-5e57d508a81b622a53fed8ff529d12ca.etc2.ctex"]
 
 [params]
 

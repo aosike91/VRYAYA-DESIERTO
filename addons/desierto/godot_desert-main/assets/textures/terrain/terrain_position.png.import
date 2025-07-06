@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dt2fga0c7wxk2"
 path.s3tc="res://.godot/imported/terrain_position.png-f8710c6cde09743414b63f3810c40d03.s3tc.ctex"
+path.etc2="res://.godot/imported/terrain_position.png-f8710c6cde09743414b63f3810c40d03.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/terrain/terrain_position.png"
-dest_files=["res://.godot/imported/terrain_position.png-f8710c6cde09743414b63f3810c40d03.s3tc.ctex"]
+dest_files=["res://.godot/imported/terrain_position.png-f8710c6cde09743414b63f3810c40d03.s3tc.ctex", "res://.godot/imported/terrain_position.png-f8710c6cde09743414b63f3810c40d03.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbqdnbqaxad8t"
 path.s3tc="res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png-f9df4cd9fcf34015b36281b5e430468a.s3tc.ctex"
+path.etc2="res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png-f9df4cd9fcf34015b36281b5e430468a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png"
-dest_files=["res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png-f9df4cd9fcf34015b36281b5e430468a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png-f9df4cd9fcf34015b36281b5e430468a.s3tc.ctex", "res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Metallic_2K_jpg-Poliigon_MetalRust_7642_Roughness_2K_jpg.png-f9df4cd9fcf34015b36281b5e430468a.etc2.ctex"]
 
 [params]
 

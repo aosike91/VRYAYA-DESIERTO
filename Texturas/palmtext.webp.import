@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://do4s3rs3hbid7"
 path.s3tc="res://.godot/imported/palmtext.webp-7fc481957aea832a3fa735c7d8b9b83c.s3tc.ctex"
+path.etc2="res://.godot/imported/palmtext.webp-7fc481957aea832a3fa735c7d8b9b83c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texturas/palmtext.webp"
-dest_files=["res://.godot/imported/palmtext.webp-7fc481957aea832a3fa735c7d8b9b83c.s3tc.ctex"]
+dest_files=["res://.godot/imported/palmtext.webp-7fc481957aea832a3fa735c7d8b9b83c.s3tc.ctex", "res://.godot/imported/palmtext.webp-7fc481957aea832a3fa735c7d8b9b83c.etc2.ctex"]
 
 [params]
 

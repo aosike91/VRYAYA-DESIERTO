@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bp0rqkl47p7gf"
 path.s3tc="res://.godot/imported/Boulder_albedo.png-94cb7f49af7d280039e371e29d51b470.s3tc.ctex"
+path.etc2="res://.godot/imported/Boulder_albedo.png-94cb7f49af7d280039e371e29d51b470.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texturas/Desierto/Boulder_albedo.png"
-dest_files=["res://.godot/imported/Boulder_albedo.png-94cb7f49af7d280039e371e29d51b470.s3tc.ctex"]
+dest_files=["res://.godot/imported/Boulder_albedo.png-94cb7f49af7d280039e371e29d51b470.s3tc.ctex", "res://.godot/imported/Boulder_albedo.png-94cb7f49af7d280039e371e29d51b470.etc2.ctex"]
 
 [params]
 

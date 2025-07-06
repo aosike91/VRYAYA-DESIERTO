@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://flye5jc1tio"
 path.s3tc="res://.godot/imported/FlatBoulder_normal.png-9d114cd29b610d079d0fce9f7b813346.s3tc.ctex"
+path.etc2="res://.godot/imported/FlatBoulder_normal.png-9d114cd29b610d079d0fce9f7b813346.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New Folder/FlatBoulder_normal.png"
-dest_files=["res://.godot/imported/FlatBoulder_normal.png-9d114cd29b610d079d0fce9f7b813346.s3tc.ctex"]
+dest_files=["res://.godot/imported/FlatBoulder_normal.png-9d114cd29b610d079d0fce9f7b813346.s3tc.ctex", "res://.godot/imported/FlatBoulder_normal.png-9d114cd29b610d079d0fce9f7b813346.etc2.ctex"]
 
 [params]
 

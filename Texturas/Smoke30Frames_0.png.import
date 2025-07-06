@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2rtwagvey5ff"
 path.s3tc="res://.godot/imported/Smoke30Frames_0.png-b19d8ae8d4afaf7f266ee7fa87dbb6a1.s3tc.ctex"
+path.etc2="res://.godot/imported/Smoke30Frames_0.png-b19d8ae8d4afaf7f266ee7fa87dbb6a1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texturas/Smoke30Frames_0.png"
-dest_files=["res://.godot/imported/Smoke30Frames_0.png-b19d8ae8d4afaf7f266ee7fa87dbb6a1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Smoke30Frames_0.png-b19d8ae8d4afaf7f266ee7fa87dbb6a1.s3tc.ctex", "res://.godot/imported/Smoke30Frames_0.png-b19d8ae8d4afaf7f266ee7fa87dbb6a1.etc2.ctex"]
 
 [params]
 

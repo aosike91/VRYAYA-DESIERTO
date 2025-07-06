@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://sl08sv5qaghd"
 path.s3tc="res://.godot/imported/Rockpile_orm.png-ec9750f2c8a2f88ae8945ce292fd213b.s3tc.ctex"
+path.etc2="res://.godot/imported/Rockpile_orm.png-ec9750f2c8a2f88ae8945ce292fd213b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New Folder/Rockpile_orm.png"
-dest_files=["res://.godot/imported/Rockpile_orm.png-ec9750f2c8a2f88ae8945ce292fd213b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Rockpile_orm.png-ec9750f2c8a2f88ae8945ce292fd213b.s3tc.ctex", "res://.godot/imported/Rockpile_orm.png-ec9750f2c8a2f88ae8945ce292fd213b.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c0rufq0e8iapn"
 path.s3tc="res://.godot/imported/desierto_Shrub_albedo.png-105684e2be7f5fa9c565e28f60781df8.s3tc.ctex"
+path.etc2="res://.godot/imported/desierto_Shrub_albedo.png-105684e2be7f5fa9c565e28f60781df8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/Desierto/desierto_Shrub_albedo.png"
-dest_files=["res://.godot/imported/desierto_Shrub_albedo.png-105684e2be7f5fa9c565e28f60781df8.s3tc.ctex"]
+dest_files=["res://.godot/imported/desierto_Shrub_albedo.png-105684e2be7f5fa9c565e28f60781df8.s3tc.ctex", "res://.godot/imported/desierto_Shrub_albedo.png-105684e2be7f5fa9c565e28f60781df8.etc2.ctex"]
 
 [params]
 

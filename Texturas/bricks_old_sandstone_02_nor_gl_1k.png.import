@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7roijp6ik7rw"
 path.s3tc="res://.godot/imported/bricks_old_sandstone_02_nor_gl_1k.png-273f57813f971292153864071c8cb393.s3tc.ctex"
+path.etc2="res://.godot/imported/bricks_old_sandstone_02_nor_gl_1k.png-273f57813f971292153864071c8cb393.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/bricks_old_sandstone_02_nor_gl_1k.png"
-dest_files=["res://.godot/imported/bricks_old_sandstone_02_nor_gl_1k.png-273f57813f971292153864071c8cb393.s3tc.ctex"]
+dest_files=["res://.godot/imported/bricks_old_sandstone_02_nor_gl_1k.png-273f57813f971292153864071c8cb393.s3tc.ctex", "res://.godot/imported/bricks_old_sandstone_02_nor_gl_1k.png-273f57813f971292153864071c8cb393.etc2.ctex"]
 
 [params]
 

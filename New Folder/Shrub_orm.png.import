@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djbfmjdsai33q"
 path.s3tc="res://.godot/imported/Shrub_orm.png-ff4143c27b74eca7893f2cf4b653b88e.s3tc.ctex"
+path.etc2="res://.godot/imported/Shrub_orm.png-ff4143c27b74eca7893f2cf4b653b88e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New Folder/Shrub_orm.png"
-dest_files=["res://.godot/imported/Shrub_orm.png-ff4143c27b74eca7893f2cf4b653b88e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Shrub_orm.png-ff4143c27b74eca7893f2cf4b653b88e.s3tc.ctex", "res://.godot/imported/Shrub_orm.png-ff4143c27b74eca7893f2cf4b653b88e.etc2.ctex"]
 
 [params]
 

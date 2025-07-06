@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://btunntimubjjj"
 path.s3tc="res://.godot/imported/piramide_old_sandstone_02_nor_gl_1k.png-0912924abaad0c79eb9e1d5157aa2a6d.s3tc.ctex"
+path.etc2="res://.godot/imported/piramide_old_sandstone_02_nor_gl_1k.png-0912924abaad0c79eb9e1d5157aa2a6d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/piramide_old_sandstone_02_nor_gl_1k.png"
-dest_files=["res://.godot/imported/piramide_old_sandstone_02_nor_gl_1k.png-0912924abaad0c79eb9e1d5157aa2a6d.s3tc.ctex"]
+dest_files=["res://.godot/imported/piramide_old_sandstone_02_nor_gl_1k.png-0912924abaad0c79eb9e1d5157aa2a6d.s3tc.ctex", "res://.godot/imported/piramide_old_sandstone_02_nor_gl_1k.png-0912924abaad0c79eb9e1d5157aa2a6d.etc2.ctex"]
 
 [params]
 

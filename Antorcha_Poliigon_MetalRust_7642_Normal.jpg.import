@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://3xuplwdnjt7x"
 path.s3tc="res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Normal.jpg-60e26b6070dfe61ee67262a800526ca0.s3tc.ctex"
+path.etc2="res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Normal.jpg-60e26b6070dfe61ee67262a800526ca0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Antorcha_Poliigon_MetalRust_7642_Normal.jpg"
-dest_files=["res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Normal.jpg-60e26b6070dfe61ee67262a800526ca0.s3tc.ctex"]
+dest_files=["res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Normal.jpg-60e26b6070dfe61ee67262a800526ca0.s3tc.ctex", "res://.godot/imported/Antorcha_Poliigon_MetalRust_7642_Normal.jpg-60e26b6070dfe61ee67262a800526ca0.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo8oa2mr1810h"
 path.s3tc="res://.godot/imported/Ground_albedo.png-315aee6cc80eddff2a783f822ef1672f.s3tc.ctex"
+path.etc2="res://.godot/imported/Ground_albedo.png-315aee6cc80eddff2a783f822ef1672f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/terrain/Ground_albedo.png"
-dest_files=["res://.godot/imported/Ground_albedo.png-315aee6cc80eddff2a783f822ef1672f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ground_albedo.png-315aee6cc80eddff2a783f822ef1672f.s3tc.ctex", "res://.godot/imported/Ground_albedo.png-315aee6cc80eddff2a783f822ef1672f.etc2.ctex"]
 
 [params]
 

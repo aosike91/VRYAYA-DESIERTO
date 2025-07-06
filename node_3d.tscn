@@ -1,10 +1,9 @@
-[gd_scene load_steps=78 format=4 uid="uid://bc122wfj402tu"]
+[gd_scene load_steps=79 format=4 uid="uid://bc122wfj402tu"]
 
 [ext_resource type="Script" path="res://MainVR.gd" id="1_yt087"]
 [ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="2_o8w1q"]
 [ext_resource type="Script" path="res://xr_origin_3d.gd" id="2_oukal"]
 [ext_resource type="PackedScene" uid="uid://bebsylbljuite" path="res://desierto.tscn" id="2_qu2x8"]
-[ext_resource type="Environment" uid="uid://dndrnxt14j874" path="res://envyroment.tres" id="3_equg0"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_fof7u"]
 [ext_resource type="Script" path="res://color_change_cube.gd" id="5_hiqmb"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="6_dmyjw"]
@@ -15,8 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="9_5ygjf"]
 [ext_resource type="AudioStream" uid="uid://cd102nurcemcd" path="res://audios/AUDIO2.mp3" id="9_wrcuq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="10_6cphr"]
+[ext_resource type="PackedScene" uid="uid://ks1ljxcu357l" path="res://world_environment.tscn" id="11_7yfbu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="11_gq0cn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="12_3meo1"]
+[ext_resource type="PackedScene" uid="uid://cgolmvhr20h1m" path="res://directional_light_3d.tscn" id="12_nryg5"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="13_d34kq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="14_g4r60"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="16_6va20"]
@@ -82,6 +83,7 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58m1e"]
 resource_name = "Material.001"
 cull_mode = 2
+shading_mode = 2
 albedo_color = Color(0.906915, 0.527184, 0.621025, 1)
 roughness = 0.5
 disable_receive_shadows = true
@@ -393,7 +395,7 @@ disable_receive_shadows = true
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ap0qg")
 
-[sub_resource type="Resource" id="Resource_26op4"]
+[sub_resource type="Resource" id="Resource_04yw2"]
 script = ExtResource("13_d34kq")
 amount = 2000
 enabled = true
@@ -402,7 +404,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_waneo"]
+[sub_resource type="Resource" id="Resource_5k8kn"]
 script = ExtResource("14_g4r60")
 position = Vector3(0.2, 0, 0.2)
 rotation = Vector3(20, 360, 20)
@@ -413,9 +415,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_tmuw5"]
+[sub_resource type="Resource" id="Resource_sr1ih"]
 script = ExtResource("11_gq0cn")
-stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_26op4"), SubResource("Resource_waneo")])
+stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_04yw2"), SubResource("Resource_5k8kn")])
 
 [sub_resource type="Resource" id="Resource_vj8ic"]
 script = ExtResource("18_yl11u")
@@ -429,7 +431,7 @@ radius = 21.4428
 script = ExtResource("18_yl11u")
 radius = 7.53492
 
-[sub_resource type="Resource" id="Resource_i2g7d"]
+[sub_resource type="Resource" id="Resource_im2ko"]
 script = ExtResource("13_d34kq")
 amount = 70
 enabled = true
@@ -438,7 +440,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_4u4o6"]
+[sub_resource type="Resource" id="Resource_sjd24"]
 script = ExtResource("14_g4r60")
 position = Vector3(0.2, 0, 0.2)
 rotation = Vector3(20, 360, 20)
@@ -449,9 +451,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_gotgs"]
+[sub_resource type="Resource" id="Resource_yynlw"]
 script = ExtResource("11_gq0cn")
-stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_i2g7d"), SubResource("Resource_4u4o6")])
+stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_im2ko"), SubResource("Resource_sjd24")])
 
 [sub_resource type="Resource" id="Resource_ghgar"]
 script = ExtResource("18_yl11u")
@@ -533,25 +535,10 @@ laser_hit_material = SubResource("StandardMaterial3D_qvxs8")
 show_target = true
 target_radius = 0.1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("3_equg0")
+[node name="WorldEnvironment" parent="." instance=ExtResource("11_7yfbu")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.0300562, -0.999353, -0.0197806, -0.95016, -0.0347092, 0.309824, -0.31031, 0.00948258, -0.950588, -33.262, 29.824, -82.418)
-light_color = Color(1, 0.635294, 0.384314, 1)
-light_energy = 2.296
-light_bake_mode = 0
-light_cull_mask = 4294180865
-shadow_enabled = true
-shadow_reverse_cull_face = true
-shadow_transmittance_bias = 1.705
-shadow_blur = 0.33
-directional_shadow_max_distance = 75.0
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996041, -0.0888943, 0, 0.0888943, 0.996041, -31.296, -0.643, -56.703)
-size = Vector3(49.443, 7.625, 42.666)
-interior = true
+[node name="DirectionalLight3D" parent="." instance=ExtResource("12_nryg5")]
+transform = Transform3D(0.0300562, -0.999353, -0.0197806, 0.896702, 0.0182151, 0.44226, -0.441614, -0.0310299, 0.896669, -33.262, 29.824, -82.418)
 
 [node name="Botones" type="Node3D" parent="."]
 transform = Transform3D(-0.00256561, 0, 0.489993, 0, 0.49, 0, -0.489993, 0, -0.00256561, -23.325, 7.857, -12.5106)
@@ -564,11 +551,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="Emisor" type="MeshInstance3D" parent="Botones/Receptor"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 0, 0, -6.94772)
+layers = 64
 mesh = SubResource("ArrayMesh_6xiqe")
 skeleton = NodePath("")
 
 [node name="Text_001" type="MeshInstance3D" parent="Botones/Receptor"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -4.30417)
+layers = 3
 mesh = SubResource("ArrayMesh_40g1c")
 skeleton = NodePath("")
 
@@ -584,11 +573,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Botones/Mensaje"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 0, 0, -14.0235)
+layers = 3
 mesh = SubResource("ArrayMesh_r0obx")
 skeleton = NodePath("")
 
 [node name="Text_002" type="MeshInstance3D" parent="Botones/Mensaje"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -11.712)
+layers = 3
 mesh = SubResource("ArrayMesh_yuk74")
 skeleton = NodePath("")
 
@@ -604,11 +595,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Botones/Código"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 9.53674e-07, 0, -21.0559)
+layers = 3
 mesh = SubResource("ArrayMesh_ijfaj")
 skeleton = NodePath("")
 
 [node name="Text_003" type="MeshInstance3D" parent="Botones/Código"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -18.9551)
+layers = 3
 mesh = SubResource("ArrayMesh_68qa5")
 skeleton = NodePath("")
 
@@ -631,6 +624,7 @@ skeleton = NodePath("")
 
 [node name="Text" type="MeshInstance3D" parent="Botones/Emisor"]
 transform = Transform3D(-0.691615, -0.00362131, 0, 0, 0, -0.691625, 0.00362131, -0.691615, 0, 4.26516, -3.69706, -1.27561)
+layers = 3
 mesh = SubResource("ArrayMesh_ppbyj")
 skeleton = NodePath("")
 
@@ -665,7 +659,7 @@ mesh = SubResource("PlaneMesh_ybbim")
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.996737, -0.0807208, 0, 0.0807208, 0.996737, -27.0236, 1.89533, -60.1663)
 script = ExtResource("10_6cphr")
-modifier_stack = SubResource("Resource_tmuw5")
+modifier_stack = SubResource("Resource_sr1ih")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -675,6 +669,7 @@ source_scale_multiplier = 2.0
 source_ignore_position = false
 source_ignore_rotation = false
 source_ignore_scale = false
+override_cast_shadow = 0
 path = "res://addons/proton_scatter/demos/assets/grass_2.tscn"
 
 [node name="SphereShape2" type="Node3D" parent="Grass"]
@@ -722,16 +717,17 @@ stream = ExtResource("30_8kpaa")
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.991149, -0.132758, 0, 0.132758, 0.991149, -27.0236, 13.2962, -60.1663)
 script = ExtResource("10_6cphr")
-modifier_stack = SubResource("Resource_gotgs")
+modifier_stack = SubResource("Resource_yynlw")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
 [node name="ScatterItem" type="Node3D" parent="Grass2"]
-transform = Transform3D(0.9947, 0, 0, 0, 0.9947, 0, 0, 0, 0.9947, 0, 0, 0)
+transform = Transform3D(0.9947, 0, 0, 0, 0.9947, 0, 0, 0, 0.9947, 0, 0.180558, 1.34801)
 script = ExtResource("16_6va20")
 source_scale_multiplier = 2.0
 source_ignore_rotation = false
 source_ignore_scale = false
+visibility_layers = 2
 path = "res://palmeras.tscn"
 
 [node name="SphereShape2" type="Node3D" parent="Grass2"]

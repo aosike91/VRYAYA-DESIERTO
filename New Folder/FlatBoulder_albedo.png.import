@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxlteabm11wsa"
 path.s3tc="res://.godot/imported/FlatBoulder_albedo.png-0e94c66611319e2f7f61d0aff15beeb1.s3tc.ctex"
+path.etc2="res://.godot/imported/FlatBoulder_albedo.png-0e94c66611319e2f7f61d0aff15beeb1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New Folder/FlatBoulder_albedo.png"
-dest_files=["res://.godot/imported/FlatBoulder_albedo.png-0e94c66611319e2f7f61d0aff15beeb1.s3tc.ctex"]
+dest_files=["res://.godot/imported/FlatBoulder_albedo.png-0e94c66611319e2f7f61d0aff15beeb1.s3tc.ctex", "res://.godot/imported/FlatBoulder_albedo.png-0e94c66611319e2f7f61d0aff15beeb1.etc2.ctex"]
 
 [params]
 

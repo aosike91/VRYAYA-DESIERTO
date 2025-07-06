@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cfh5rpu0xco7j"
 path.s3tc="res://.godot/imported/Boulder_orm.png-6c801dccbba7c4d43a6f25f016de72aa.s3tc.ctex"
+path.etc2="res://.godot/imported/Boulder_orm.png-6c801dccbba7c4d43a6f25f016de72aa.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://New Folder/Boulder_orm.png"
-dest_files=["res://.godot/imported/Boulder_orm.png-6c801dccbba7c4d43a6f25f016de72aa.s3tc.ctex"]
+dest_files=["res://.godot/imported/Boulder_orm.png-6c801dccbba7c4d43a6f25f016de72aa.s3tc.ctex", "res://.godot/imported/Boulder_orm.png-6c801dccbba7c4d43a6f25f016de72aa.etc2.ctex"]
 
 [params]
 

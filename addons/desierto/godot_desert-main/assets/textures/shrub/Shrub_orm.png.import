@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rt46eweggnup"
 path.s3tc="res://.godot/imported/Shrub_orm.png-19c0e03d760f5da10799a8b62dace354.s3tc.ctex"
+path.etc2="res://.godot/imported/Shrub_orm.png-19c0e03d760f5da10799a8b62dace354.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/shrub/Shrub_orm.png"
-dest_files=["res://.godot/imported/Shrub_orm.png-19c0e03d760f5da10799a8b62dace354.s3tc.ctex"]
+dest_files=["res://.godot/imported/Shrub_orm.png-19c0e03d760f5da10799a8b62dace354.s3tc.ctex", "res://.godot/imported/Shrub_orm.png-19c0e03d760f5da10799a8b62dace354.etc2.ctex"]
 
 [params]
 

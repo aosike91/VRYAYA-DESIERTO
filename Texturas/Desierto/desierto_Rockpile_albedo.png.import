@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cytpceq7rec7n"
 path.s3tc="res://.godot/imported/desierto_Rockpile_albedo.png-b421af9a1ba70a7e1f9431ddba06fb80.s3tc.ctex"
+path.etc2="res://.godot/imported/desierto_Rockpile_albedo.png-b421af9a1ba70a7e1f9431ddba06fb80.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/Desierto/desierto_Rockpile_albedo.png"
-dest_files=["res://.godot/imported/desierto_Rockpile_albedo.png-b421af9a1ba70a7e1f9431ddba06fb80.s3tc.ctex"]
+dest_files=["res://.godot/imported/desierto_Rockpile_albedo.png-b421af9a1ba70a7e1f9431ddba06fb80.s3tc.ctex", "res://.godot/imported/desierto_Rockpile_albedo.png-b421af9a1ba70a7e1f9431ddba06fb80.etc2.ctex"]
 
 [params]
 

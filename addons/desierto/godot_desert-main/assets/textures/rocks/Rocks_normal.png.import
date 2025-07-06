@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://e415ime1jc0y"
 path.s3tc="res://.godot/imported/Rocks_normal.png-60662b4255a00e3dea25c3c42065da5b.s3tc.ctex"
+path.etc2="res://.godot/imported/Rocks_normal.png-60662b4255a00e3dea25c3c42065da5b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/rocks/Rocks_normal.png"
-dest_files=["res://.godot/imported/Rocks_normal.png-60662b4255a00e3dea25c3c42065da5b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Rocks_normal.png-60662b4255a00e3dea25c3c42065da5b.s3tc.ctex", "res://.godot/imported/Rocks_normal.png-60662b4255a00e3dea25c3c42065da5b.etc2.ctex"]
 
 [params]
 

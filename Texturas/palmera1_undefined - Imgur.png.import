@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d31f87leiydw3"
 path.s3tc="res://.godot/imported/palmera1_undefined - Imgur.png-3925e18d039d502ec8b6b869fa117b8b.s3tc.ctex"
+path.etc2="res://.godot/imported/palmera1_undefined - Imgur.png-3925e18d039d502ec8b6b869fa117b8b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Texturas/palmera1_undefined - Imgur.png"
-dest_files=["res://.godot/imported/palmera1_undefined - Imgur.png-3925e18d039d502ec8b6b869fa117b8b.s3tc.ctex"]
+dest_files=["res://.godot/imported/palmera1_undefined - Imgur.png-3925e18d039d502ec8b6b869fa117b8b.s3tc.ctex", "res://.godot/imported/palmera1_undefined - Imgur.png-3925e18d039d502ec8b6b869fa117b8b.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8kqdwe33xf4i"
 path.s3tc="res://.godot/imported/Boulder_orm.png-c72220477aefda5dc9ac66f8b40f5aa1.s3tc.ctex"
+path.etc2="res://.godot/imported/Boulder_orm.png-c72220477aefda5dc9ac66f8b40f5aa1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://addons/desierto/godot_desert-main/assets/textures/boulder/Boulder_orm.png"
-dest_files=["res://.godot/imported/Boulder_orm.png-c72220477aefda5dc9ac66f8b40f5aa1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Boulder_orm.png-c72220477aefda5dc9ac66f8b40f5aa1.s3tc.ctex", "res://.godot/imported/Boulder_orm.png-c72220477aefda5dc9ac66f8b40f5aa1.etc2.ctex"]
 
 [params]
 

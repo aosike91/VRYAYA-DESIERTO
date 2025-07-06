@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpx3upohoabl7"
 path.s3tc="res://.godot/imported/FlatBoulder_normal.png-7058b83f5fe996baec239c00c674535e.s3tc.ctex"
+path.etc2="res://.godot/imported/FlatBoulder_normal.png-7058b83f5fe996baec239c00c674535e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Texturas/Desierto/FlatBoulder_normal.png"
-dest_files=["res://.godot/imported/FlatBoulder_normal.png-7058b83f5fe996baec239c00c674535e.s3tc.ctex"]
+dest_files=["res://.godot/imported/FlatBoulder_normal.png-7058b83f5fe996baec239c00c674535e.s3tc.ctex", "res://.godot/imported/FlatBoulder_normal.png-7058b83f5fe996baec239c00c674535e.etc2.ctex"]
 
 [params]
 
