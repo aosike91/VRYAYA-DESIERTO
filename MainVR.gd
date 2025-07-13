@@ -16,7 +16,7 @@ extends Node3D
 @onready var viewport2d  = $XROrigin3D/XRCamera3D/Viewport2Din3D
 @onready var confettiaudio: AudioStreamPlayer = $AudioStreamPlayer
 @onready var grass_node = $Node3D/Grass  # Referencia al nodo Grass
-var videos = ["ERRORMENSAJE", "ERRORCODIGO", "ERROREMISOR","ERRORRECEPTOR"]  
+var videos = ["ERRORMENSAJE", "ErrorCodigo", "ERROREMISOR","ERRORRECEPTOR"]  
 var respuestas_correctas = ["Mensaje", "Código", "Emisor","Receptor"]  
 var audios_respuesta = []
 var indice_video_actual = 0
@@ -44,8 +44,10 @@ func _ready():
 func configurar_calidad_vr():
 	# Obtener la interfaz XR
 	xr_interface = XRServer.find_interface("OpenXR")
-	if xr_interface and xr_interface.is_initialized():
-		print("Configurando calidad VR...")
+	if xr_interface:
+		XRServer.primary_interface = xr_interface
+		if xr_interface.is_initialized():
+			print("Configurando calidad de VR")
 		
 		# Aumentar la resolución de renderizado (valores entre 1.0 y 2.0)
 		# Empieza con 1.3, puedes ajustar según tu hardware

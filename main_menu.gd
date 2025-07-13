@@ -10,6 +10,14 @@ var target_scene_path = "res://node_3d.tscn"
 
 func _ready() -> void:
 	# Configurar viewport
+	var xr_interface = XRServer.find_interface("OpenXR")
+	if xr_interface:
+		XRServer.primary_interface = xr_interface
+		if xr_interface.is_initialized():
+			get_viewport().use_xr = true
+			print("✅ OpenXR iniciado desde el menú principal")
+		else:
+			print("❌ OpenXR no se pudo inicializar")
 	get_viewport().msaa_3d = Viewport.MSAA_4X
 	
 	# Conectar señales

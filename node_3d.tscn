@@ -1,9 +1,8 @@
-[gd_scene load_steps=79 format=4 uid="uid://bc122wfj402tu"]
+[gd_scene load_steps=77 format=4 uid="uid://bc122wfj402tu"]
 
 [ext_resource type="Script" path="res://MainVR.gd" id="1_yt087"]
 [ext_resource type="PackedScene" uid="uid://ctltchlf2j2r4" path="res://addons/xr-simulator/XRSimulator.tscn" id="2_o8w1q"]
 [ext_resource type="Script" path="res://xr_origin_3d.gd" id="2_oukal"]
-[ext_resource type="PackedScene" uid="uid://bebsylbljuite" path="res://desierto.tscn" id="2_qu2x8"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="5_fof7u"]
 [ext_resource type="Script" path="res://color_change_cube.gd" id="5_hiqmb"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="6_dmyjw"]
@@ -14,10 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="9_5ygjf"]
 [ext_resource type="AudioStream" uid="uid://cd102nurcemcd" path="res://audios/AUDIO2.mp3" id="9_wrcuq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="10_6cphr"]
-[ext_resource type="PackedScene" uid="uid://ks1ljxcu357l" path="res://world_environment.tscn" id="11_7yfbu"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="11_gq0cn"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="12_3meo1"]
-[ext_resource type="PackedScene" uid="uid://cgolmvhr20h1m" path="res://directional_light_3d.tscn" id="12_nryg5"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="13_d34kq"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="14_g4r60"]
 [ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="16_6va20"]
@@ -30,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://dtiqe1fby7grc" path="res://audios/audiorespuesta3.mp3" id="28_8lgde"]
 [ext_resource type="AudioStream" uid="uid://dgsopautmv8c2" path="res://audios/audiorespuesta4.mp3" id="29_h4tao"]
 [ext_resource type="AudioStream" uid="uid://dmo3kbnptnjcn" path="res://audios/audiofinal.mp3" id="30_8kpaa"]
+[ext_resource type="PackedScene" uid="uid://bebsylbljuite" path="res://desierto.tscn" id="31_r6qgu"]
 
 [sub_resource type="Animation" id="Animation_3v4gw"]
 length = 0.001
@@ -395,7 +393,7 @@ disable_receive_shadows = true
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ap0qg")
 
-[sub_resource type="Resource" id="Resource_04yw2"]
+[sub_resource type="Resource" id="Resource_6byvw"]
 script = ExtResource("13_d34kq")
 amount = 2000
 enabled = true
@@ -404,7 +402,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_5k8kn"]
+[sub_resource type="Resource" id="Resource_qmpjf"]
 script = ExtResource("14_g4r60")
 position = Vector3(0.2, 0, 0.2)
 rotation = Vector3(20, 360, 20)
@@ -415,9 +413,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_sr1ih"]
+[sub_resource type="Resource" id="Resource_cx81s"]
 script = ExtResource("11_gq0cn")
-stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_04yw2"), SubResource("Resource_5k8kn")])
+stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_6byvw"), SubResource("Resource_qmpjf")])
 
 [sub_resource type="Resource" id="Resource_vj8ic"]
 script = ExtResource("18_yl11u")
@@ -431,7 +429,7 @@ radius = 21.4428
 script = ExtResource("18_yl11u")
 radius = 7.53492
 
-[sub_resource type="Resource" id="Resource_im2ko"]
+[sub_resource type="Resource" id="Resource_q0jww"]
 script = ExtResource("13_d34kq")
 amount = 70
 enabled = true
@@ -440,7 +438,7 @@ custom_seed = 0
 restrict_height = true
 reference_frame = 1
 
-[sub_resource type="Resource" id="Resource_sjd24"]
+[sub_resource type="Resource" id="Resource_wmwls"]
 script = ExtResource("14_g4r60")
 position = Vector3(0.2, 0, 0.2)
 rotation = Vector3(20, 360, 20)
@@ -451,9 +449,9 @@ custom_seed = 0
 restrict_height = false
 reference_frame = 2
 
-[sub_resource type="Resource" id="Resource_yynlw"]
+[sub_resource type="Resource" id="Resource_87uoi"]
 script = ExtResource("11_gq0cn")
-stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_im2ko"), SubResource("Resource_sjd24")])
+stack = Array[ExtResource("12_3meo1")]([SubResource("Resource_q0jww"), SubResource("Resource_wmwls")])
 
 [sub_resource type="Resource" id="Resource_ghgar"]
 script = ExtResource("18_yl11u")
@@ -468,15 +466,13 @@ script = ExtResource("18_yl11u")
 radius = 7.53492
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.1801, 0)
 script = ExtResource("1_yt087")
 
 [node name="XRSimulator" parent="." instance=ExtResource("2_o8w1q")]
 
-[node name="Desierto" parent="." instance=ExtResource("2_qu2x8")]
-transform = Transform3D(1.216, 0, 0, 0, 1.451, 0, 0, 0, 1.282, -28.218, -1.15, 0.273)
-
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(0.780376, 0, -0.625311, 0, 1, 0, 0.625311, 0, 0.780376, -28.4127, 2.54192, -18.0104)
+transform = Transform3D(-0.879889, 0, 0.475179, 0, 1, 0, -0.475179, 0, -0.879889, -29.5264, 5.69375, -9.12184)
 script = ExtResource("2_oukal")
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
@@ -489,6 +485,8 @@ far = 200.0
 transform = Transform3D(1, 0, -1.68583e-08, 0, 1, 0, 1.68583e-08, 0, 1, 0.191458, 0, -0.893677)
 scene = ExtResource("6_qp7rk")
 viewport_size = Vector2(1359, 720)
+unshaded = true
+filter = false
 scene_properties_keys = PackedStringArray()
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D/XRCamera3D/Viewport2Din3D"]
@@ -535,13 +533,8 @@ laser_hit_material = SubResource("StandardMaterial3D_qvxs8")
 show_target = true
 target_radius = 0.1
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("11_7yfbu")]
-
-[node name="DirectionalLight3D" parent="." instance=ExtResource("12_nryg5")]
-transform = Transform3D(0.0300562, -0.999353, -0.0197806, 0.896702, 0.0182151, 0.44226, -0.441614, -0.0310299, 0.896669, -33.262, 29.824, -82.418)
-
 [node name="Botones" type="Node3D" parent="."]
-transform = Transform3D(-0.00256561, 0, 0.489993, 0, 0.49, 0, -0.489993, 0, -0.00256561, -23.325, 7.857, -12.5106)
+transform = Transform3D(-0.00256561, 0, 0.489993, 0, 0.49, 0, -0.489993, 0, -0.00256561, -23.9474, 7.857, 3.2193)
 
 [node name="Receptor" type="RigidBody3D" parent="Botones"]
 collision_layer = 5242881
@@ -551,13 +544,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="Emisor" type="MeshInstance3D" parent="Botones/Receptor"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 0, 0, -6.94772)
-layers = 64
+layers = 320
 mesh = SubResource("ArrayMesh_6xiqe")
 skeleton = NodePath("")
 
 [node name="Text_001" type="MeshInstance3D" parent="Botones/Receptor"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -4.30417)
-layers = 3
+layers = 256
 mesh = SubResource("ArrayMesh_40g1c")
 skeleton = NodePath("")
 
@@ -573,13 +566,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Botones/Mensaje"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 0, 0, -14.0235)
-layers = 3
+layers = 259
 mesh = SubResource("ArrayMesh_r0obx")
 skeleton = NodePath("")
 
 [node name="Text_002" type="MeshInstance3D" parent="Botones/Mensaje"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -11.712)
-layers = 3
+layers = 259
 mesh = SubResource("ArrayMesh_yuk74")
 skeleton = NodePath("")
 
@@ -595,13 +588,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Botones/Código"]
 transform = Transform3D(0.927517, 0, -9.31323e-10, 0, 0.927517, 0, 0, 0, 2.94991, 9.53674e-07, 0, -21.0559)
-layers = 3
+layers = 259
 mesh = SubResource("ArrayMesh_ijfaj")
 skeleton = NodePath("")
 
 [node name="Text_003" type="MeshInstance3D" parent="Botones/Código"]
 transform = Transform3D(4.65661e-10, 1.41148, 0, 0, 0, -1.41148, -1.41148, 4.65661e-10, 0, 0.972405, -0.57456, -18.9551)
-layers = 3
+layers = 259
 mesh = SubResource("ArrayMesh_68qa5")
 skeleton = NodePath("")
 
@@ -619,12 +612,13 @@ script = ExtResource("5_hiqmb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Botones/Emisor"]
 transform = Transform3D(-0.00237965, 0, 1.44544, 0, 0.454483, 0, -0.454477, 0, -0.00756832, 3.28602, -3.41553, -0.793996)
+layers = 257
 mesh = SubResource("ArrayMesh_s2dcs")
 skeleton = NodePath("")
 
 [node name="Text" type="MeshInstance3D" parent="Botones/Emisor"]
 transform = Transform3D(-0.691615, -0.00362131, 0, 0, 0, -0.691625, 0.00362131, -0.691615, 0, 4.26516, -3.69706, -1.27561)
-layers = 3
+layers = 259
 mesh = SubResource("ArrayMesh_ppbyj")
 skeleton = NodePath("")
 
@@ -650,7 +644,7 @@ stream = ExtResource("8_k0hag")
 stream = ExtResource("9_wrcuq")
 
 [node name="Pantalla" type="MeshInstance3D" parent="."]
-transform = Transform3D(-3.31734, -0.059201, -0.00335243, 0.0146025, -0.0438208, -1.70793, 0.189862, -1.03101, 0.0727841, -28.5801, 2.98619, -7.24322)
+transform = Transform3D(-3.89132, -0.00348999, -0.00856105, 0.0171012, -0.0513191, -2.00018, 0.0105033, -1.20941, 0.0848983, -29.2296, 4.30817, 2.75375)
 cast_shadow = 0
 ignore_occlusion_culling = true
 mesh = SubResource("PlaneMesh_ybbim")
@@ -659,7 +653,7 @@ mesh = SubResource("PlaneMesh_ybbim")
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.996737, -0.0807208, 0, 0.0807208, 0.996737, -27.0236, 1.89533, -60.1663)
 script = ExtResource("10_6cphr")
-modifier_stack = SubResource("Resource_sr1ih")
+modifier_stack = SubResource("Resource_cx81s")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
@@ -717,17 +711,17 @@ stream = ExtResource("30_8kpaa")
 process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 0.991149, -0.132758, 0, 0.132758, 0.991149, -27.0236, 13.2962, -60.1663)
 script = ExtResource("10_6cphr")
-modifier_stack = SubResource("Resource_yynlw")
+modifier_stack = SubResource("Resource_87uoi")
 Performance/use_chunks = true
 Performance/chunk_dimensions = Vector3(15, 15, 15)
 
 [node name="ScatterItem" type="Node3D" parent="Grass2"]
-transform = Transform3D(0.9947, 0, 0, 0, 0.9947, 0, 0, 0, 0.9947, 0, 0.180558, 1.34801)
+transform = Transform3D(0.9947, 0, 0, 0, 0.9947, 0, 0, 0, 0.9947, 0, 0.180557, 1.34801)
 script = ExtResource("16_6va20")
 source_scale_multiplier = 2.0
 source_ignore_rotation = false
 source_ignore_scale = false
-visibility_layers = 2
+visibility_layers = 256
 path = "res://palmeras.tscn"
 
 [node name="SphereShape2" type="Node3D" parent="Grass2"]
@@ -749,3 +743,6 @@ visible = false
 script = ExtResource("17_ji4mr")
 negative = true
 shape = SubResource("Resource_lyy63")
+
+[node name="Node3D" parent="." instance=ExtResource("31_r6qgu")]
+transform = Transform3D(1.08937, 0, 0, 0, 1.34569, 0, 0, 0, 1.43324, -28.3535, 0.490103, 1.46883)
